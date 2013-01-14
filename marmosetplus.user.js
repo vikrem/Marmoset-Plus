@@ -8,6 +8,7 @@
 // @version				1.3.1
 // @include		https://marmoset.student.cs.uwaterloo.ca/*
 // ==/UserScript==
+//
 
 // Inject JQuery into our script in order to do magical things
 // such as parse XHTML DOM from ajax web queries in all browsers!
@@ -28,6 +29,8 @@ addJQuery(main);
 
 function main()
 {
+	// Loading image spinner
+	var loadimg = "data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
 	// Simply changes the header
 	function changeHeader()
 	{
@@ -77,7 +80,13 @@ function main()
 		var isProjectPage = window.location.href.match(/project\.jsp.*?/);
 		if(!isProjectPage)
 			return;
-		if($("td:contains('tested yet')").length > 0){
+		var testing = $("td:contains('tested yet')");
+		if(testing.length > 0)
+		{
+			testing.each(function() {
+				var html = '<td colspan="4"><img src="' + loadimg + '"></td>';
+				$(this).replaceWith(html);
+			});
 			setTimeout(function(){
 				window.location.reload();
 			},5000);
