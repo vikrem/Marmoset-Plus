@@ -5,7 +5,7 @@
 // ==UserScript==
 // @name                Marmoset Plus
 // @description	        Improve the Marmoset user experience
-// @version				1.3.1
+// @version				1.3.2
 // @include		https://marmoset.student.cs.uwaterloo.ca/*
 // ==/UserScript==
 //
