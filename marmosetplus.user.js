@@ -16,7 +16,7 @@ function addJQuery(callback)
 {
 	var script = document.createElement("script");
 	// It's important to use the https link and not the http link for obtaining jquery
-	script.setAttribute("src", "https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js");
+	script.setAttribute("src", "//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js");
 	script.addEventListener('load', function() {
 		var script = document.createElement("script");
 		script.textContent = "(" + callback.toString() + ")();";
